@@ -1,17 +1,1048 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Villers Expresse — Livraison locale</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="bg-cream">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villers Expresse — Livraison à Villers-Cotterêts en vélo cargo électrique</title>
+<meta name="description" content="Villers Expresse : livraison locale à Villers-Cotterêts (02) en vélo cargo électrique. Commandez chez les commerçants de la ville par SMS, WhatsApp, e-mail ou téléphone.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0c09">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Villers Expresse — La livraison autrement">
+<meta property="og:description" content="Livraison locale à Villers-Cotterêts en vélo cargo électrique. Presque tout. Partout. Très rapide.">
+<meta property="og:site_name" content="Villers Expresse">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%230b0c09'/%3E%3Cpath d='M6 9 L20 33 L34 9' stroke='%23c6f135' stroke-width='6' fill='none' stroke-linecap='square'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Villers Expresse",
+  "alternateName": ["Villers Express", "Villers Expresse livraison"],
+  "description": "Service de livraison locale à vélo cargo électrique à Villers-Cotterêts et environs.",
+  "telephone": "+33764194095",
+  "email": "mohr0289@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Villers-Cotterêts", "addressCountry": "FR" },
+  "areaServed": { "@type": "City", "name": "Villers-Cotterêts" },
+  "slogan": "La livraison autrement"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #0b0c09;
+    --carte: #14160f;
+    --carte-2: #1b1e14;
+    --lime: #c6f135;
+    --lime-dim: #93b524;
+    --creme: #f3f1e6;
+    --gris: #8b8d7f;
+    --ligne: #2a2d1f;
+    --font-display: 'Archivo Black', 'Work Sans', sans-serif;
+    --font-body: 'Work Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--creme);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Chevron divider (signature motif) ---------- */
+  .chevron-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 28px 0;
+  }
+  .chevron {
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 14px solid var(--lime);
+    opacity: 0.85;
+  }
+  .chevron:nth-child(2) { opacity: 0.5; }
+  .chevron:nth-child(3) { opacity: 0.25; }
+
+  /* ---------- Header / nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11,12,9,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--ligne);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.3px;
+  }
+  .logo-mark {
+    width: 30px; height: 30px;
+    position: relative;
+  }
+  .logo-mark svg { width: 100%; height: 100%; }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .nav-links a { text-decoration: none; color: var(--gris); transition: color .15s; }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--lime); }
+  .nav-cta {
+    background: var(--lime);
+    color: var(--noir);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--lime-dim); }
+  .nav-mobile-hide { display: flex; }
+  @media (max-width: 780px) {
+    .nav-mobile-hide { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 90px 0 60px;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+  }
+  .eyebrow-plaque {
+    display: inline-block;
+    border: 2px solid var(--lime);
+    color: var(--lime);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 12px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.03;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--lime); }
+  .hero-tagline {
+    font-size: 18px;
+    color: var(--gris);
+    max-width: 46ch;
+    margin-bottom: 32px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 26px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid var(--lime);
+    font-family: var(--font-body);
+  }
+  .btn-primary { background: var(--lime); color: var(--noir); }
+  .btn-primary:hover { background: var(--lime-dim); border-color: var(--lime-dim); }
+  .btn-secondary { background: transparent; color: var(--lime); }
+  .btn-secondary:hover { background: rgba(198,241,53,0.08); }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 12px;
+    border-top: 1px solid var(--ligne);
+  }
+  .hero-stat b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--lime);
+  }
+  .hero-stat span { font-size: 13px; color: var(--gris); }
+
+  .hero-visual {
+    position: relative;
+    border: 2px solid var(--ligne);
+    background: var(--carte);
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-visual svg { width: 68%; }
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(135deg, rgba(198,241,53,0.05) 0 2px, transparent 2px 22px);
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 70px 0; }
+  .section-head { max-width: 60ch; margin-bottom: 44px; }
+  .section-label {
+    color: var(--lime);
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.08;
+  }
+  .section-head p {
+    color: var(--gris);
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  /* ---------- Comment ça marche ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ligne);
+    border: 1px solid var(--ligne);
+  }
+  @media (max-width: 780px) { .steps { grid-template-columns: 1fr; } }
+  .step {
+    background: var(--noir);
+    padding: 32px 28px;
+  }
+  .step-num {
+    font-family: var(--font-display);
+    color: var(--lime);
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .step h3 { font-size: 19px; margin-bottom: 10px; }
+  .step p { color: var(--gris); font-size: 15px; }
+
+  /* ---------- Catégories ---------- */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .cat-grid { grid-template-columns: 1fr; } }
+  .cat-card {
+    background: var(--carte);
+    border: 1px solid var(--ligne);
+    padding: 26px 22px;
+    transition: border-color .15s, transform .15s;
+  }
+  .cat-card:hover { border-color: var(--lime); }
+  .cat-icon { width: 34px; height: 34px; color: var(--lime); margin-bottom: 18px; }
+  .cat-icon svg { width: 100%; height: 100%; }
+  .cat-card h3 { font-size: 17px; margin-bottom: 6px; }
+  .cat-card p { font-size: 14px; color: var(--gris); }
+
+  /* ---------- Commande en ligne ---------- */
+  .order-panel {
+    background: var(--carte);
+    border: 1px solid var(--ligne);
+  }
+  .shop-tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--ligne);
+  }
+  .shop-tab {
+    flex: 0 0 auto;
+    padding: 16px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gris);
+    background: none;
+    border: none;
+    border-right: 1px solid var(--ligne);
+    cursor: pointer;
+    font-family: var(--font-body);
+    white-space: nowrap;
+  }
+  .shop-tab.active { color: var(--lime); background: var(--carte-2); }
+  .shop-tab:hover { color: var(--creme); }
+
+  .order-body {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+  }
+  @media (max-width: 860px) { .order-body { grid-template-columns: 1fr; } }
+
+  .product-list { padding: 24px; border-right: 1px solid var(--ligne); }
+  @media (max-width: 860px) { .product-list { border-right: none; border-bottom: 1px solid var(--ligne); } }
+  .shop-desc { color: var(--gris); font-size: 14px; margin-bottom: 20px; }
+  .product-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--ligne);
+    gap: 12px;
+  }
+  .product-row:last-child { border-bottom: none; }
+  .product-name { font-weight: 600; font-size: 15px; }
+  .product-price { color: var(--lime); font-size: 14px; font-weight: 700; }
+  .add-btn {
+    background: transparent;
+    border: 2px solid var(--lime);
+    color: var(--lime);
+    width: 34px; height: 34px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-body);
+    flex-shrink: 0;
+  }
+  .add-btn:hover { background: var(--lime); color: var(--noir); }
+
+  .cart-panel { padding: 24px; }
+  .cart-panel h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .cart-empty { color: var(--gris); font-size: 14px; }
+  .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ligne);
+    gap: 8px;
+  }
+  .cart-item-name { flex: 1; }
+  .cart-item-controls { display: flex; align-items: center; gap: 8px; }
+  .qty-btn {
+    background: none;
+    border: 1px solid var(--ligne);
+    color: var(--creme);
+    width: 22px; height: 22px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .qty-btn:hover { border-color: var(--lime); color: var(--lime); }
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--lime);
+  }
+  .send-options { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+  .send-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    border: 2px solid var(--ligne);
+    color: var(--creme);
+    cursor: pointer;
+    font-family: var(--font-body);
+    background: none;
+  }
+  .send-btn:hover { border-color: var(--lime); color: var(--lime); }
+  .send-btn.primary { background: var(--lime); color: var(--noir); border-color: var(--lime); }
+  .send-btn.primary:hover { background: var(--lime-dim); border-color: var(--lime-dim); color: var(--noir); }
+  .send-btn[disabled], .send-btn[data-disabled="true"] { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  .send-note { font-size: 12px; color: var(--gris); margin-top: 10px; }
+
+  /* ---------- Zone de livraison ---------- */
+  .zone-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 860px) { .zone-wrap { grid-template-columns: 1fr; } }
+  .zone-list { list-style: none; }
+  .zone-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ligne);
+    font-size: 15px;
+  }
+  .zone-list li:before {
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--lime);
+    flex-shrink: 0;
+  }
+  .zone-map {
+    border: 1px solid var(--ligne);
+    background: var(--carte);
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .zone-map svg { width: 62%; }
+
+  /* ---------- Pourquoi nous ---------- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 780px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--lime);
+  }
+  .why-card p { color: var(--gris); font-size: 15px; }
+
+  /* ---------- Partenaires ---------- */
+  .partners-band {
+    border-top: 1px solid var(--ligne);
+    border-bottom: 1px solid var(--ligne);
+    padding: 32px 0;
+  }
+  .partners-label { text-align: center; color: var(--gris); font-size: 13px; font-weight: 700; margin-bottom: 20px; }
+  .partners-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 34px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--gris);
+    opacity: 0.7;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info-item { margin-bottom: 24px; }
+  .contact-info-item .label { color: var(--gris); font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .contact-info-item .value { font-size: 19px; font-weight: 700; }
+  .contact-info-item .value a { text-decoration: none; }
+  .contact-info-item .value a:hover { color: var(--lime); }
+
+  form { display: flex; flex-direction: column; gap: 14px; }
+  .field label { display: block; font-size: 13px; color: var(--gris); margin-bottom: 6px; font-weight: 600; }
+  .field input, .field textarea {
+    width: 100%;
+    background: var(--carte);
+    border: 1px solid var(--ligne);
+    color: var(--creme);
+    padding: 12px 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--lime);
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    background: var(--lime);
+    color: var(--noir);
+    border: none;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    margin-top: 6px;
+  }
+  .form-submit:hover { background: var(--lime-dim); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--ligne);
+    padding: 36px 0;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--gris);
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<noscript><p style="padding:16px;background:#c6f135;color:#0b0c09;font-weight:700;text-align:center">Pour commander en ligne, activez JavaScript ou appelez le 07 64 19 40 95.</p></noscript>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M4 6 L20 34 L36 6" stroke="#c6f135" stroke-width="6" stroke-linecap="square"/></svg>
+      </span>
+      Villers Expresse
+    </div>
+    <nav class="nav-links nav-mobile-hide">
+      <a href="#comment">Comment ça marche</a>
+      <a href="#categories">Catégories</a>
+      <a href="#commander">Commander</a>
+      <a href="#zone">Zone</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#commander" class="nav-cta">Commander</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow-plaque">Villers-Cotterêts &amp; environs</span>
+      <h1>La livraison<br><span>autrement.</span></h1>
+      <p class="hero-tagline">Presque tout. Partout. Très rapide. Villers Expresse livre vos restaurants, pharmacies, épiceries et cavistes préférés en vélo cargo électrique, sans embouteillage et sans émission.</p>
+      <div class="hero-ctas">
+        <a href="#commander" class="btn-primary">Commander maintenant</a>
+        <a href="tel:+33764194095" class="btn-secondary">Appeler le livreur</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>&lt; 30 min</b><span>Délai moyen</span></div>
+        <div class="hero-stat"><b>100%</b><span>Vélo électrique</span></div>
+        <div class="hero-stat"><b>0</b><span>Émission CO₂</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle cx="55" cy="150" r="22" stroke="#c6f135" stroke-width="4"/>
+        <circle cx="150" cy="150" r="22" stroke="#c6f135" stroke-width="4"/>
+        <path d="M55 150 L90 90 L150 150 M90 90 L110 90 L130 150 M90 90 L75 60 L100 60" stroke="#f3f1e6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="30" y="95" width="30" height="24" stroke="#c6f135" stroke-width="4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="chevron-row"><div class="chevron"></div><div class="chevron"></div><div class="chevron"></div></div>
+
+<section id="comment">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Comment ça marche</div>
+      <h2>Trois étapes, zéro complication</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Choisissez un commerce</h3>
+        <p>Restaurant, pharmacie, épicerie ou caviste : parcourez les commerces partenaires de Villers-Cotterêts.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Composez votre commande</h3>
+        <p>Ajoutez vos produits au panier, puis envoyez la commande par SMS, WhatsApp, e-mail ou par appel direct.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Livraison en vélo cargo</h3>
+        <p>Un livreur à vélo cargo électrique récupère et livre votre commande directement chez vous.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Catégories livrées</div>
+      <h2>Presque tout, chez les commerçants d'ici</h2>
+      <p>Une sélection de commerces locaux, livrés par vélo cargo électrique.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v7a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3M8 12v9M18 3c-2 0-3 2-3 5v3h3M18 11v10"/></svg></div>
+        <h3>Restaurants</h3>
+        <p>Plats préparés, menus du jour, cuisine locale.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 9.5 9.5 4.5a3 3 0 0 1 4.24 0l5.76 5.76a3 3 0 0 1 0 4.24l-5 5a3 3 0 0 1-4.24 0L4.5 13.74a3 3 0 0 1 0-4.24Z"/><path d="M10 8l6 6"/></svg></div>
+        <h3>Pharmacies</h3>
+        <p>Parapharmacie, hygiène, produits du quotidien.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18l-1.5 12a2 2 0 0 1-2 1.8H6.5a2 2 0 0 1-2-1.8L3 6Z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg></div>
+        <h3>Épiceries</h3>
+        <p>Fruits, légumes, pain et produits de première nécessité.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2h8l1 6a5 5 0 0 1-10 0l1-6Z"/><path d="M12 13v9M8 22h8"/></svg></div>
+        <h3>Cavistes</h3>
+        <p>Vins et bières artisanales sélectionnés par des commerçants locaux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="commander">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Commander en ligne</div>
+      <h2>Composez votre commande</h2>
+      <p>Choisissez un commerce, ajoutez des produits, puis envoyez votre commande directement — ou appelez pour commander de vive voix.</p>
+    </div>
+
+    <div class="order-panel">
+      <div class="shop-tabs" id="shopTabs"></div>
+      <div class="order-body">
+        <div class="product-list">
+          <p class="shop-desc" id="shopDesc"></p>
+          <div id="productList"></div>
+        </div>
+        <div class="cart-panel">
+          <h3>Votre panier</h3>
+          <div id="cartContent"><p class="cart-empty">Votre panier est vide pour l'instant.</p></div>
+          <div class="cart-total" id="cartTotal" style="display:none;">
+            <span>Total</span><span id="cartTotalValue">0,00 €</span>
+          </div>
+          <div class="field" style="margin-bottom:14px;">
+            <label for="customerName">Votre nom</label>
+            <input type="text" id="customerName" autocomplete="name" placeholder="Ex : Marie Dupont">
+          </div>
+          <div class="field" style="margin-bottom:14px;">
+            <label for="deliveryAddress">Adresse de livraison</label>
+            <input type="text" id="deliveryAddress" autocomplete="street-address" placeholder="Ex : 12 rue de Soissons, Villers-Cotterêts">
+          </div>
+          <div class="send-options">
+            <a href="#" id="btnSms" class="send-btn primary" data-disabled="true">Commander par SMS</a>
+            <a href="#" id="btnWhatsapp" class="send-btn" data-disabled="true" target="_blank" rel="noopener">Commander par WhatsApp</a>
+            <a href="#" id="btnEmail" class="send-btn" data-disabled="true">Commander par e-mail</a>
+            <a href="tel:+33764194095" class="send-btn">Appeler pour commander</a>
+          </div>
+          <p class="send-note">Renseignez votre adresse puis choisissez comment envoyer la commande : SMS, WhatsApp ou e-mail s'ouvrent avec le message déjà rédigé, il ne reste plus qu'à l'envoyer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zone">
+  <div class="wrap">
+    <div class="zone-wrap">
+      <div>
+        <div class="section-label">Zone de livraison</div>
+        <h2 style="font-family:var(--font-display); font-size:clamp(26px,4vw,34px); margin-bottom:20px;">Villers-Cotterêts et ses environs</h2>
+        <ul class="zone-list">
+          <li>Villers-Cotterêts — centre-ville et quartiers</li>
+          <li>Communes limitrophes — dans un rayon de 5 km</li>
+          <li>Zones élargies — sur demande, selon disponibilité</li>
+        </ul>
+      </div>
+      <div class="zone-map">
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="90" stroke="#2a2d1f" stroke-width="2"/>
+          <circle cx="100" cy="100" r="60" stroke="#2a2d1f" stroke-width="2"/>
+          <circle cx="100" cy="100" r="6" fill="#c6f135"/>
+          <path d="M100 100 L140 60" stroke="#c6f135" stroke-width="3"/>
+          <circle cx="140" cy="60" r="4" fill="#f3f1e6"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chevron-row"><div class="chevron"></div><div class="chevron"></div><div class="chevron"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Pourquoi nous</div>
+      <h2>Le choix d'une livraison locale et propre</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Rapide</h3>
+        <p>Le vélo cargo électrique évite les embouteillages du centre-ville et livre souvent plus vite qu'une voiture.</p>
+      </div>
+      <div class="why-card">
+        <h3>Local</h3>
+        <p>Nous travaillons avec les commerçants de Villers-Cotterêts, pas avec des chaînes anonymes.</p>
+      </div>
+      <div class="why-card">
+        <h3>Écologique</h3>
+        <p>Zéro émission, zéro bruit de moteur : une livraison qui respecte la ville.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="partners-band">
+  <div class="wrap">
+    <div class="partners-label">Commerces disponibles à la commande</div>
+    <div class="partners-row">
+      <span>Le Balto</span>
+      <span>Les Pères Royal</span>
+      <span>Restaurant Apéridé</span>
+      <span>Royal Tacos</span>
+      <span>Délice Pizza</span>
+      <span>Bureau Tabac</span>
+    </div>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Contact</div>
+      <h2>Une question, un commerce à référencer ?</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-item">
+          <div class="label">Téléphone</div>
+          <div class="value"><a href="tel:+33764194095">07 64 19 40 95</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="label">E-mail</div>
+          <div class="value"><a href="mailto:mohr0289@gmail.com">mohr0289@gmail.com</a></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="label">Zone d'intervention</div>
+          <div class="value">Villers-Cotterêts et environs</div>
+        </div>
+      </div>
+      <form id="contactForm">
+        <div class="field">
+          <label for="cName">Nom</label>
+          <input type="text" id="cName" required>
+        </div>
+        <div class="field">
+          <label for="cEmail">E-mail</label>
+          <input type="email" id="cEmail" required>
+        </div>
+        <div class="field">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Villers Expresse — Villers-Cotterêts</span>
+    <span>La livraison autrement.</span>
+  </div>
+</footer>
+
+<script>
+  // ---------- Data (à remplacer par les vrais commerces et produits) ----------
+  const shops = [
+    {
+      id: "balto",
+      name: "Le Balto",
+      category: "Bar - Brasserie",
+      desc: "Bar-brasserie du centre-ville, boissons et snacks à toute heure.",
+      products: [
+        { name: "Café", price: 1.80 },
+        { name: "Demi pression", price: 3.50 },
+        { name: "Croque-monsieur", price: 6.50 },
+        { name: "Planche apéritive", price: 11.00 }
+      ]
+    },
+    {
+      id: "peres-royal",
+      name: "Les Pères Royal",
+      category: "Bar - Brasserie",
+      desc: "En face du Balto — bar et petite restauration.",
+      products: [
+        { name: "Formule midi", price: 13.50 },
+        { name: "Bière artisanale", price: 4.50 },
+        { name: "Assiette de charcuterie", price: 9.50 },
+        { name: "Café gourmand", price: 5.00 }
+      ]
+    },
+    {
+      id: "apéride",
+      name: "Restaurant Apéridé",
+      category: "Restaurant",
+      desc: "Restauration traditionnelle, plats du jour et à emporter.",
+      products: [
+        { name: "Menu du jour", price: 15.00 },
+        { name: "Plat du chef", price: 16.50 },
+        { name: "Entrée du jour", price: 6.50 },
+        { name: "Dessert maison", price: 5.50 }
+      ]
+    },
+    {
+      id: "royal-tacos",
+      name: "Royal Tacos",
+      category: "Fast-food",
+      desc: "Tacos, sandwichs et menus à emporter.",
+      products: [
+        { name: "Tacos M (1 viande)", price: 7.00 },
+        { name: "Tacos XL (3 viandes)", price: 10.50 },
+        { name: "Menu tacos + boisson", price: 9.50 },
+        { name: "Assiette tenders frites", price: 8.50 }
+      ]
+    },
+    {
+      id: "delice-pizza",
+      name: "Délice Pizza",
+      category: "Pizzeria",
+      desc: "Pizzas et spécialités italiennes à emporter ou livrées.",
+      products: [
+        { name: "Pizza Margherita", price: 8.50 },
+        { name: "Pizza 4 Fromages", price: 11.00 },
+        { name: "Pizza Royale", price: 12.50 },
+        { name: "Tiramisu maison", price: 4.50 }
+      ]
+    },
+    {
+      id: "bureau-tabac",
+      name: "Bureau Tabac",
+      category: "Tabac - Presse",
+      desc: "Presse, tabac et dépannage du quotidien.",
+      products: [
+        { name: "Presse quotidienne", price: 2.20 },
+        { name: "Carte de recharge téléphonique", price: 15.00 },
+        { name: "Jeux à gratter", price: 5.00 }
+      ]
+    }
+  ];
+
+  let activeShopId = shops[0].id;
+  let cart = {}; // key: `${shopId}::${productName}` -> {shopId, shopName, name, price, qty}
+
+  const shopTabsEl = document.getElementById('shopTabs');
+  const shopDescEl = document.getElementById('shopDesc');
+  const productListEl = document.getElementById('productList');
+  const cartContentEl = document.getElementById('cartContent');
+  const cartTotalEl = document.getElementById('cartTotal');
+  const cartTotalValueEl = document.getElementById('cartTotalValue');
+  const btnSms = document.getElementById('btnSms');
+  const btnWhatsapp = document.getElementById('btnWhatsapp');
+  const btnEmail = document.getElementById('btnEmail');
+  const addressInput = document.getElementById('deliveryAddress');
+
+  const PHONE_SMS = "+33764194095";
+  const PHONE_WHATSAPP = "33764194095";
+  const EMAIL_ORDER = "mohr0289@gmail.com";
+
+  function fmt(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+  function renderTabs() {
+    shopTabsEl.innerHTML = '';
+    shops.forEach(shop => {
+      const btn = document.createElement('button');
+      btn.className = 'shop-tab' + (shop.id === activeShopId ? ' active' : '');
+      btn.textContent = shop.name;
+      btn.type = 'button';
+      btn.addEventListener('click', () => { activeShopId = shop.id; renderTabs(); renderProducts(); });
+      shopTabsEl.appendChild(btn);
+    });
+  }
+
+  function renderProducts() {
+    const shop = shops.find(s => s.id === activeShopId);
+    shopDescEl.textContent = shop.desc;
+    productListEl.innerHTML = '';
+    shop.products.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'product-row';
+      row.innerHTML = `
+        <div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">${fmt(p.price)}</div>
+        </div>
+        <button class="add-btn" type="button" aria-label="Ajouter ${p.name}">+</button>
+      `;
+      row.querySelector('.add-btn').addEventListener('click', () => addToCart(shop, p));
+      productListEl.appendChild(row);
+    });
+  }
+
+  function addToCart(shop, product) {
+    const key = shop.id + '::' + product.name;
+    if (!cart[key]) {
+      cart[key] = { shopId: shop.id, shopName: shop.name, name: product.name, price: product.price, qty: 0 };
+    }
+    cart[key].qty += 1;
+    renderCart();
+  }
+
+  function changeQty(key, delta) {
+    if (!cart[key]) return;
+    cart[key].qty += delta;
+    if (cart[key].qty <= 0) delete cart[key];
+    renderCart();
+  }
+
+  function renderCart() {
+    const items = Object.entries(cart);
+    if (items.length === 0) {
+      cartContentEl.innerHTML = "<p class=\"cart-empty\">Votre panier est vide pour l'instant.</p>";
+      cartTotalEl.style.display = 'none';
+      [btnSms, btnWhatsapp, btnEmail].forEach(b => b.setAttribute('data-disabled', 'true'));
+      return;
+    }
+
+    cartContentEl.innerHTML = '';
+    let total = 0;
+    // Group by shop for clarity
+    const byShop = {};
+    items.forEach(([key, item]) => {
+      byShop[item.shopName] = byShop[item.shopName] || [];
+      byShop[item.shopName].push([key, item]);
+    });
+
+    Object.entries(byShop).forEach(([shopName, entries]) => {
+      const shopLabel = document.createElement('div');
+      shopLabel.style.cssText = 'font-size:12px;color:var(--gris);font-weight:700;margin-top:8px;margin-bottom:2px;';
+      shopLabel.textContent = shopName;
+      cartContentEl.appendChild(shopLabel);
+      entries.forEach(([key, item]) => {
+        total += item.price * item.qty;
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML = `
+          <span class="cart-item-name">${item.name}</span>
+          <div class="cart-item-controls">
+            <button class="qty-btn" type="button" aria-label="Retirer un ${item.name}">−</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" type="button" aria-label="Ajouter un ${item.name}">+</button>
+          </div>
+        `;
+        const [minusBtn, plusBtn] = row.querySelectorAll('.qty-btn');
+        minusBtn.addEventListener('click', () => changeQty(key, -1));
+        plusBtn.addEventListener('click', () => changeQty(key, 1));
+        cartContentEl.appendChild(row);
+      });
+    });
+
+    cartTotalEl.style.display = 'flex';
+    cartTotalValueEl.textContent = fmt(total);
+    updateSendLinks();
+  }
+
+  function buildOrderText() {
+    let total = 0;
+    let lines = ["Bonjour, je souhaite commander :"];
+    Object.values(cart).forEach(item => {
+      total += item.price * item.qty;
+      lines.push(`- ${item.qty} x ${item.name} (${item.shopName}) — ${fmt(item.price * item.qty)}`);
+    });
+    lines.push(`Total : ${fmt(total)}`);
+    const nameEl = document.getElementById('customerName');
+    const nom = (nameEl && nameEl.value.trim()) || "(à préciser)";
+    const addr = (addressInput && addressInput.value.trim()) || "(à préciser)";
+    lines.push(`Nom : ${nom}`);
+    lines.push(`Adresse de livraison : ${addr}`);
+    return lines.join('\n');
+  }
+
+  function updateSendLinks() {
+    const hasItems = Object.keys(cart).length > 0;
+    if (!hasItems) {
+      [btnSms, btnWhatsapp, btnEmail].forEach(b => { b.setAttribute('data-disabled', 'true'); b.href = '#'; });
+      return;
+    }
+    const text = buildOrderText();
+    btnSms.href = `sms:${PHONE_SMS}?&body=${encodeURIComponent(text)}`;
+    btnWhatsapp.href = `https://wa.me/${PHONE_WHATSAPP}?text=${encodeURIComponent(text)}`;
+    btnEmail.href = `mailto:${EMAIL_ORDER}?subject=${encodeURIComponent('Commande Villers Expresse')}&body=${encodeURIComponent(text)}`;
+    [btnSms, btnWhatsapp, btnEmail].forEach(b => b.removeAttribute('data-disabled'));
+  }
+
+  if (addressInput) {
+    addressInput.addEventListener('input', updateSendLinks);
+  }
+  const customerNameInput = document.getElementById('customerName');
+  if (customerNameInput) {
+    customerNameInput.addEventListener('input', updateSendLinks);
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('cName').value;
+    const email = document.getElementById('cEmail').value;
+    const msg = document.getElementById('cMsg').value;
+    const body = `Nom : ${name}\nE-mail : ${email}\n\n${msg}`;
+    window.location.href = `mailto:${EMAIL_ORDER}?subject=${encodeURIComponent('Message depuis le site Villers Expresse')}&body=${encodeURIComponent(body)}`;
+  });
+
+  renderTabs();
+  renderProducts();
+  renderCart();
+</script>
+
+</body>
 </html>
